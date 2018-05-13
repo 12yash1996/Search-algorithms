@@ -1,0 +1,17 @@
+array = [1,4,5,7,8,9,10,12,14,16,20,21,24,45,67]
+def BinarySearch(arr,start_index,end_index,search_element):
+    if end_index >= start_index:
+        middle_index = start_index + (end_index - start_index)//2
+        if arr[middle_index] == search_element:
+            return middle_index
+        elif arr[middle_index] > search_element:
+            return BinarySearch(arr,start_index,middle_index-1,search_element)
+        else:
+            return BinarySearch(arr,middle_index+1,end_index,search_element)
+    else:
+        return -1
+result = BinarySearch(array,0,len(array)-1,67)
+if result != -1:
+    print("The element was found at index : ",result)
+else:
+    print("The element is not present in the array.")
